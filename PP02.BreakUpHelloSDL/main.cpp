@@ -1,15 +1,12 @@
 #include <SDL.h>
 
+/*
 void init() {}
 void render() {}
 void update() {}
 void handleEvents() {}
 void clean() {}
 
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
-
-bool g_bRunning = true;
 
 int main() {
 	
@@ -22,6 +19,10 @@ int main() {
 
 	clean();
 }
+*/
+
+SDL_Window* g_pWindow = 0;
+SDL_Renderer* g_pRenderer = 0;
 
 bool g_bRunning = false;	//this will create a loop
 
