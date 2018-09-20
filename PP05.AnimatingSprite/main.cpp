@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 Game* g_game = 0;	// our Game object
 
