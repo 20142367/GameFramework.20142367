@@ -5,7 +5,7 @@ Game* g_game = 0;	// our Game object
 int main(int argc, char* argv[]) {
 
 	g_game = new Game();
-	g_game->init("Chpater 1", 100, 100, 640, 480, false);
+	g_game->init("PP05.AnimateSprite", 100, 100, 640, 480, false);
 
 	while (g_game->running()) {
 
