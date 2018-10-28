@@ -26,3 +26,15 @@ void GameObject::update()
 	m_currentFrame = int(((SDL_GetTicks() / 50) % 6));
 }
 */
+
+void draw() {
+
+}
+
+void update() {
+
+}
+
+void clean() {
+
+}

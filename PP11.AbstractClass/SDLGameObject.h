@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "Game.h"
 
 class SDLGameObject : public GameObject
 {
@@ -8,8 +7,8 @@ public:
 	SDLGameObject(const LoaderParams* pParams);
 
 	virtual void draw();
-	virtual void update() {};
-	virtual void clean() {};
+	virtual void update();
+	virtual void clean();
 
 protected:
 	int m_x;

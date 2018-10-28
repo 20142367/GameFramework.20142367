@@ -1,6 +1,8 @@
 #include "Game.h"
 
-Game* g_game = 0;	// our Game object
+// Game* g_game = 0;	// our Game object
+// Game* Game::s_pInstance = 0;
+
 
 int main(int argc, char* argv[]) {
 	/*
@@ -21,7 +23,7 @@ int main(int argc, char* argv[]) {
 	*/
 
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("Chapter 1", 100, 100, 640, 480, false))
+	if (TheGame::Instance()->init("PP11.AbstractClass", 100, 100, 640, 480, false))
 	{
 		std::cout << "game init success!\n";
 		while (TheGame::Instance()->running())

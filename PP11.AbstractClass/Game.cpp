@@ -37,7 +37,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		*/
 
 		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 128, 82, "animate")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	}
@@ -106,8 +106,6 @@ void Game::handleEvents() {
 }
 
 Game *Game::Instance() {
-
-	
 
 	if (s_pInstance == 0) {
 

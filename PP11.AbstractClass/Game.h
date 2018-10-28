@@ -35,6 +35,8 @@ public:
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
 private:
+	Game() {};
+
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	SDL_RendererFlip* m_pRendererFlip;
@@ -43,8 +45,6 @@ private:
 	TextureManager* m_textureManager;
 
 	bool m_bRunning;
-
-	Game();
 
 	// create the s_pInstance member variable
 	static Game* s_pInstance;
