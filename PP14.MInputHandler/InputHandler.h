@@ -32,6 +32,12 @@ public:
 	bool getMouseButtonState(int buttonNumber);
 	Vector2D* getMousePosition();
 
+	void onMouseMove(SDL_Event event);
+	void onMouseButtonDown(SDL_Event event);
+	void onMouseButtonUp(SDL_Event event);
+	void onKeyDown();
+	void onKeyUp();
+
 private:
 	InputHandler();
 
