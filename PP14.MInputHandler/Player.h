@@ -12,6 +12,5 @@ public :
 	virtual void clean();
 
 private :
-	void handleInput();
-
+	void handleInput();		// 플레이어 이동을 위한 핸들러 함수
 };

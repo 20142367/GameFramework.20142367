@@ -12,9 +12,9 @@ public:
 	virtual void clean();
 
 protected:
-	Vector2D m_position;
-	Vector2D m_velocity;
-	Vector2D m_acceleration;
+	Vector2D m_position;		// 위치 값
+	Vector2D m_velocity;		// 속도 값
+	Vector2D m_acceleration;	// 가속도 값
 
 	int m_width;
 	int m_height;

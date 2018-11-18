@@ -4,11 +4,6 @@
 class Enemy : public SDLGameObject
 {
 public:
-	/*
-	void update();
-	void clean() {};
-	*/
-
 	Enemy(const LoaderParams* pParams);
 
 	virtual void draw();
@@ -16,5 +11,5 @@ public:
 	virtual void clean();
 
 private :
-	void handleInput();
+	void handleInput();		// 적을 이동하기 위한 핸들러 함수
 };

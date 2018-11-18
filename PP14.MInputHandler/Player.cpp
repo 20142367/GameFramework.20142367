@@ -12,17 +12,12 @@ void Player::draw()
 
 void Player::update()
 {
-	/*
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
-	m_acceleration.setX(1);
-	*/
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 
-	handleInput();	// add our function
-
 	m_currentFrame = int((SDL_GetTicks() / 100) % 6);
 
+	handleInput();	// 입력을 지속적으로 업데이트
 
 	SDLGameObject::update();
 }
@@ -31,7 +26,9 @@ void Player::clean()
 {
 }
 
-void Player::handleInput() {
+void Player::handleInput() 
+{
+	// 키보드 입력
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 		m_velocity.setX(2);

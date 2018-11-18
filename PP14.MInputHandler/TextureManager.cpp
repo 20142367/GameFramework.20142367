@@ -3,6 +3,7 @@
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer)
 {
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+
 	if (pTempSurface == 0) {
 		return false;
 	}
@@ -20,8 +21,8 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 
 void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
-	SDL_Rect srcRect;
-	SDL_Rect destRect;
+	SDL_Rect srcRect;	// 원본 사각형
+	SDL_Rect destRect;	// 대상 사각형
 
 	srcRect.x = 0;
 	srcRect.y = 0;
@@ -37,6 +38,7 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 {
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
+
 	srcRect.x = width * currentFrame;
 	srcRect.y = height * (currentRow - 1);
 	srcRect.w = destRect.w = width;
@@ -47,7 +49,7 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
-TextureManager* TextureManager::Instance()
+TextureManager* TextureManager::Instance()		// 생성자 접근을 위한 변수 s_pInstance를 한개만 생성(싱글톤)
 {
 	static TextureManager* s_pInstance;
 
