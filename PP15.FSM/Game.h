@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include "Player.h"
 #include "Enemy.h"
+#include "GameStateMachine.h"
 #include <vector>
 
 using namespace std;
@@ -41,6 +42,8 @@ private:
 
 	// create the s_pInstance member variable
 	static Game* s_pInstance;
+
+	GameStateMachine* m_pGameStateMachine;
 };
 // create the typedef
 typedef Game TheGame;

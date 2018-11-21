@@ -16,6 +16,6 @@ private:
 	PlayState();
 
 	static const std::string s_playID;
+
 	static PlayState* s_pInstance;
 };
-

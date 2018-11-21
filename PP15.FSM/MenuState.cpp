@@ -4,6 +4,10 @@ const std::string MenuState::s_menuID = "MENU";
 
 MenuState* MenuState::s_pInstance = 0;
 
+MenuState::MenuState()
+{
+}
+
 void MenuState::update()
 {
 }
@@ -28,7 +32,7 @@ bool MenuState::onExit()
 
 MenuState* MenuState::Instance()
 {
-	if (s_pInstance = 0)
+	if (s_pInstance == 0)
 	{
 		s_pInstance = new MenuState();
 		return s_pInstance;

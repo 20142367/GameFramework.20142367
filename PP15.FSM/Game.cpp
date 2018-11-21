@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "InputHandler.h"
+#include "MenuState.h"
+#include "PlayState.h"
 
 Game* Game::s_pInstance = 0;	// Game에 접근하기 위한 인스턴스 변수
 
@@ -23,6 +25,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));	// m_gameObejects라는 벡터배열(?)에 Player객체를 push해 줌
 		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(MenuState::Instance());
+
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);		// (렌더러, R, G, B, Alpha) 각 값을 이용하여 색 설정(여기서는 배경색)
 	}
 	else
@@ -38,6 +43,8 @@ void Game::render()
 	// draw color로 render 지우기
 	SDL_RenderClear(m_pRenderer);
 
+	m_pGameStateMachine->render();
+
 	for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameOjbect*>에 들어가있는 객체들을 렌더(그려줌)
 		m_gameObjects[i]->draw();
 
@@ -47,8 +54,10 @@ void Game::render()
 
 void Game::update() 
 {
+	m_pGameStateMachine->update();
 	for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameObject*>에 들어가있는 객체들을 업데이트 시켜줌
 		m_gameObjects[i]->update();
+
 }
 
 void Game::clean() 
@@ -61,6 +70,10 @@ void Game::clean()
 
 void Game::handleEvents() 
 {
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+	{
+		m_pGameStateMachine->changeState(PlayState::Instance());
+	}
 	TheInputHandler::Instance()->update();
 }
 

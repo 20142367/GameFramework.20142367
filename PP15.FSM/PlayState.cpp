@@ -3,6 +3,10 @@
 const std::string PlayState::s_playID = "PLAY";
 PlayState* PlayState::s_pInstance = 0;
 
+PlayState::PlayState()
+{
+}
+
 void PlayState::update()
 {
 }
@@ -25,7 +29,7 @@ bool PlayState::onExit()
 
 PlayState* PlayState::Instance()
 {
-	if (s_pInstance = 0)
+	if (s_pInstance == 0)
 	{
 		s_pInstance = new PlayState();
 		return s_pInstance;
