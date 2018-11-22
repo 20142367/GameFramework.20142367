@@ -17,35 +17,31 @@ void InputHandler::update()
 {
 	SDL_Event event;
 
-	SDL_PollEvent(&event);
-
-	if (event.type == SDL_QUIT)
+	while (SDL_PollEvent(&event))
 	{
-		TheGame::Instance()->quit();
-	}
-	
-	switch (event.type)
-	{
-	case SDL_QUIT:
-		TheGame::Instance()->quit();
-		break;
-	case SDL_MOUSEMOTION:
-		onMouseMove(event);
-		break;
-	case SDL_MOUSEBUTTONDOWN:
-		onMouseButtonDown(event);
-		break;
-	case SDL_MOUSEBUTTONUP:
-		onMouseButtonUp(event);
-		break;
-	case SDL_KEYDOWN:
-		onKeyDown();
-		break;
-	case SDL_KEYUP:
-		onKeyUp();
-		break;
-	default:
-		break;
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			TheGame::Instance()->quit();
+			break;
+		case SDL_MOUSEMOTION:
+			onMouseMove(event);
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			onMouseButtonDown(event);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			onMouseButtonUp(event);
+			break;
+		case SDL_KEYDOWN:
+			onKeyDown();
+			break;
+		case SDL_KEYUP:
+			onKeyUp();
+			break;
+		default:
+			break;
+		}
 	}
 }
 
