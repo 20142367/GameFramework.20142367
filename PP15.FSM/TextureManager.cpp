@@ -49,6 +49,11 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
+void TextureManager::clearFromTextureMap(std::string id)
+{
+	m_textureMap.erase(id);
+}
+
 TextureManager* TextureManager::Instance()		// 생성자 접근을 위한 변수 s_pInstance를 한개만 생성(싱글톤)
 {
 	static TextureManager* s_pInstance;

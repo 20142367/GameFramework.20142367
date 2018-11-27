@@ -45,8 +45,8 @@ void Game::render()
 
 	m_pGameStateMachine->render();
 
-	for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameOjbect*>에 들어가있는 객체들을 렌더(그려줌)
-		m_gameObjects[i]->draw();
+	//for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameOjbect*>에 들어가있는 객체들을 렌더(그려줌)
+	//	m_gameObjects[i]->draw();
 
 	// 화면 제시
 	SDL_RenderPresent(m_pRenderer);
@@ -55,8 +55,8 @@ void Game::render()
 void Game::update() 
 {
 	m_pGameStateMachine->update();
-	for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameObject*>에 들어가있는 객체들을 업데이트 시켜줌
-		m_gameObjects[i]->update();
+	//for (vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++)		// vector<GameObject*>에 들어가있는 객체들을 업데이트 시켜줌
+	//	m_gameObjects[i]->update();
 
 }
 
@@ -70,7 +70,7 @@ void Game::clean()
 
 void Game::handleEvents() 
 {
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
 	{
 		m_pGameStateMachine->changeState(PlayState::Instance());
 	}

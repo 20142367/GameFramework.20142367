@@ -18,6 +18,8 @@ public:
 	// 프레임이 있는 그림
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
+	void clearFromTextureMap(std::string id);
+
 	// 인스턴수 변수 생성 함수
 	static TextureManager* Instance();
 
