@@ -17,5 +17,7 @@ private:
 
 	static const std::string s_playID;
 
+	std::vector<GameObject*> m_gameObjects;
+
 	static PlayState* s_pInstance;
 };

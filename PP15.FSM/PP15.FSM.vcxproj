@@ -23,7 +23,7 @@
     <ProjectGuid>{3386361B-B98F-4AE4-A82A-00327C5EF876}</ProjectGuid>
     <RootNamespace>PP15FSM</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>PP15.MenuState</ProjectName>
+    <ProjectName>PP17.PlayState</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

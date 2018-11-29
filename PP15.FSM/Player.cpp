@@ -28,6 +28,7 @@ void Player::clean()
 
 void Player::handleInput() 
 {
+	/*
 	// 키보드 입력
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
@@ -48,4 +49,9 @@ void Player::handleInput()
 	{
 		m_velocity.setY(2);
 	}
+	*/
+
+	Vector2D* target = TheInputHandler::Instance()->getMousePosition();
+	m_velocity = *target - m_position;
+	m_velocity /= 50;
 }
