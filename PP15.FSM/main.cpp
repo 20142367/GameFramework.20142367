@@ -7,7 +7,7 @@ Uint32 frameStart, frameTime;
 int main(int argc, char* argv[]) {
 
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("PP17.PlayState", 100, 100, 640, 480, false))		// 창 생성(창 이름, 창 x좌표, 창 y좌표, 창의 가로길이, 창의 세로길이, 풀스크린 여부)
+	if (TheGame::Instance()->init("PP18.PauseState", 100, 100, 640, 480, false))		// 창 생성(창 이름, 창 x좌표, 창 y좌표, 창의 가로길이, 창의 세로길이, 풀스크린 여부)
 	{
 		std::cout << "game init success!\n";	// 성공
 	}

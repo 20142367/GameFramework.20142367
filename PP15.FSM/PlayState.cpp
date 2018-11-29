@@ -1,5 +1,7 @@
 #include "PlayState.h"
 #include "Game.h"
+#include "InputHandler.h"
+#include "PauseState.h"
 
 const std::string PlayState::s_playID = "PLAY";
 PlayState* PlayState::s_pInstance = 0;
@@ -10,6 +12,11 @@ PlayState::PlayState()
 
 void PlayState::update()
 {
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->changeState(new PauseState());
+	}
+
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();

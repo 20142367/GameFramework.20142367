@@ -38,6 +38,8 @@ public:
 	void onKeyDown();
 	void onKeyUp();
 
+	void reset();
+
 private:
 	InputHandler();
 
