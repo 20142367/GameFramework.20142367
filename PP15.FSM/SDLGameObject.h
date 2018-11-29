@@ -11,6 +11,11 @@ public:
 	virtual void update();
 	virtual void clean();
 
+	Vector2D& getPosition() { return m_position; }
+
+	int getWidth() { return m_width; }
+	int getHeight() { return m_height; }
+
 protected:
 	Vector2D m_position;		// 위치 값
 	Vector2D m_velocity;		// 속도 값
@@ -20,6 +25,7 @@ protected:
 	int m_height;
 	int m_currentRow;
 	int m_currentFrame;
+	int m_numFrames;
 
 	std::string m_textureID;
 };

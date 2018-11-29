@@ -3,6 +3,7 @@
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
+	m_numFrames = 5;
 }
 
 void Player::draw()
@@ -15,7 +16,7 @@ void Player::update()
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 
-	m_currentFrame = int((SDL_GetTicks() / 100) % 6);
+	m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
 
 	handleInput();	// 입력을 지속적으로 업데이트
 

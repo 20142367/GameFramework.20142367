@@ -48,7 +48,7 @@ bool PauseState::onEnter()
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
 
-	std::cout << "entering PlayState" << std::endl;
+	std::cout << "entering PauseState" << std::endl;
 	return true;
 }
 
@@ -65,6 +65,6 @@ bool PauseState::onExit()
 
 	TheInputHandler::Instance()->reset();
 
-	std::cout << "exiting PlayState" << std::endl;
+	std::cout << "exiting PauseState" << std::endl;
 	return true;
 }

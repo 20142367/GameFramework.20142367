@@ -28,7 +28,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(MenuState::Instance());
 
-		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);		// (렌더러, R, G, B, Alpha) 각 값을 이용하여 색 설정(여기서는 배경색)
+		SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);		// (렌더러, R, G, B, Alpha) 각 값을 이용하여 색 설정(여기서는 배경색)
 	}
 	else
 	{
