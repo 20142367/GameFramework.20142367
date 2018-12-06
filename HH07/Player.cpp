@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "Game.h"
+#include "PlayState.h"
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
@@ -20,6 +21,7 @@ void Player::update()
 	m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
 
 	handleInput();	// 입력을 지속적으로 업데이트
+
 
 	SDLGameObject::update();
 }
@@ -57,8 +59,12 @@ void Player::handleInput()
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
+	
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
 	{
-		TheTextureManager::Instance()->draw("bullet", Player::m_position.getX(), Player::m_position.getY(), 32, 32, TheGame::Instance()->getRenderer(), SDL_FLIP_NONE);
+
+		Ball* ball = new Ball(new LoaderParams(Player::m_position.getX(), Player::m_position.getY(), 32, 32, "ball"));
+		PlayState::Instance()->m_balls.push_back(ball);
+
 	}
 }

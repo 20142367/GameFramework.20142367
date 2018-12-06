@@ -27,8 +27,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			return false;
 		}
 
-		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));	// m_gameObejects¶ó´Â º¤ÅÍ¹è¿­(?)¿¡ Player°´Ã¼¸¦ pushÇØ ÁÜ
-		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
+		//m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));	// m_gameObejects¶ó´Â º¤ÅÍ¹è¿­(?)¿¡ Player°´Ã¼¸¦ pushÇØ ÁÜ
+		//m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(MenuState::Instance());
