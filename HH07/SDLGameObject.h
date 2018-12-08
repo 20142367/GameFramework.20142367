@@ -16,6 +16,9 @@ public:
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }
 
+	int m_currentRow;
+	int m_currentFrame;
+
 protected:
 	Vector2D m_position;		// 위치 값
 	Vector2D m_velocity;		// 속도 값
@@ -23,8 +26,6 @@ protected:
 
 	int m_width;
 	int m_height;
-	int m_currentRow;
-	int m_currentFrame;
 	int m_numFrames;
 
 	std::string m_textureID;

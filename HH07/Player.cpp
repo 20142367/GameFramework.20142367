@@ -3,6 +3,9 @@
 #include "Game.h"
 #include "PlayState.h"
 
+Uint32 startTime, currentTime;
+const float coolTime = 400.0f;
+
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 	m_numFrames = 5;
@@ -58,13 +61,16 @@ void Player::handleInput()
 	Vector2D* target = TheInputHandler::Instance()->getMousePosition();
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
-
 	
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
 	{
+		startTime = SDL_GetTicks();
 
-		Ball* ball = new Ball(new LoaderParams(Player::m_position.getX(), Player::m_position.getY(), 32, 32, "ball"));
-		PlayState::Instance()->m_balls.push_back(ball);
-
+		if (coolTime <= startTime - currentTime)
+		{
+			Ball* ball = new Ball(new LoaderParams(Player::m_position.getX()+128, Player::m_position.getY()+10, 32, 32, "ball"));
+			PlayState::Instance()->m_balls.push_back(ball);
+			currentTime = SDL_GetTicks();
+		}
 	}
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "GameState.h"
 #include "SDLGameObject.h"
+#include "Ball.h"
+#include "Wall.h"
 
 class PlayState : public GameState
 {
@@ -14,6 +16,7 @@ public:
 	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 
 	std::vector<Ball*> m_balls;
+	std::vector<GameObject*> m_gameObjects;
 
 	static PlayState* Instance();
 
@@ -21,8 +24,6 @@ private:
 	PlayState();
 
 	static const std::string s_playID;
-
-	std::vector<GameObject*> m_gameObjects;
 
 	static PlayState* s_pInstance;
 };
