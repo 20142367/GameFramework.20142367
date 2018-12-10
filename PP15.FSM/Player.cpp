@@ -9,15 +9,12 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Player::draw()
 {
-	SDLGameObject::draw(); // we now use SDLGameObject
+	SDLGameObject::draw(); // SDLGameObject의 draw함수를 사용
 }
 
 void Player::update()
 {
-	m_velocity.setX(0);
-	m_velocity.setY(0);
-
-	m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
+	m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);		// 스프라이트 이미지의 개수만큼 순환
 
 	handleInput();	// 입력을 지속적으로 업데이트
 
@@ -30,35 +27,8 @@ void Player::clean()
 
 void Player::handleInput() 
 {
-	/*
-	// 키보드 입력
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-	{
-		m_velocity.setX(2);
-	}
-
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-	{
-		m_velocity.setX(-2);
-	}
-
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-	{
-		m_velocity.setY(-2);
-	}
-
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
-	{
-		m_velocity.setY(2);
-	}
-	*/
-
-	Vector2D* target = TheInputHandler::Instance()->getMousePosition();
+	Vector2D* target = TheInputHandler::Instance()->getMousePosition();		// 마우스 좌표를 따라 캐릭터 이동
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
-	{
-		TheTextureManager::Instance()->draw("bullet", Player::m_position.getX(), Player::m_position.getY(), 32, 32, TheGame::Instance()->getRenderer(), SDL_FLIP_NONE);
-	}
 }

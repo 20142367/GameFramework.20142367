@@ -13,51 +13,35 @@ MenuState::MenuState()
 
 void MenuState::update()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	GameState::update();
 }
 
 void MenuState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	GameState::render();
 }
 
-bool MenuState::onEnter()
+bool MenuState::onEnter()		// MenuState 진입 시
 {
-	if (!TheTextureManager::Instance()->load("assets/button.png", "playbutton", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
+	// 스프라이트 로드
+	GameState::loadTexture("assets/button.png", "playbutton");
+	GameState::loadTexture("assets/exit.png", "exitbutton");
 
-	if (!TheTextureManager::Instance()->load("assets/exit.png", "exitbutton", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-
+	// 객체 설정
 	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToPlay);
 	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 400, 100, "exitbutton"), s_exitFromMenu);
 
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
+	// 배열에 push
+	GameState::push(button1, button2);
 
 	std::cout << "entering MenuState" << std::endl;
 
 	return true;
 }
 
-bool MenuState::onExit()
+bool MenuState::onExit()		// MenuState 종료 시
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-
-	m_gameObjects.clear();
+	GameState::onExit();
 
 	TheTextureManager::Instance()->clearFromTextureMap("playbutton");
 	TheTextureManager::Instance()->clearFromTextureMap("exitbutton");
@@ -67,14 +51,14 @@ bool MenuState::onExit()
 	return true;
 }
 
-void MenuState::s_menuToPlay()
+void MenuState::s_menuToPlay()		// Play 버튼 선택 시, PlayState로 전환
 {
 	TheGame::Instance()->getStateMachine()->changeState(PlayState::Instance());
 
 	std::cout << "Play button clicked\n";
 }
 
-void MenuState::s_exitFromMenu()
+void MenuState::s_exitFromMenu()		// Exit 버튼 선택 시, 게임종료
 {
 	TheGame::Instance()->quit();
 

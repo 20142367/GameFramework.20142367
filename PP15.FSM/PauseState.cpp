@@ -18,47 +18,34 @@ void PauseState::s_resumePlay()
 
 void PauseState::update()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	GameState::update();
 }
 
 void PauseState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	GameState::render();
 }
 
-bool PauseState::onEnter()
+bool PauseState::onEnter()		// PauseState 진입 시
 {
-	if (!TheTextureManager::Instance()->load("assets/resume.png", "resumebutton", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/main.png", "mainbutton", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
+	// 스프라이트 로드
+	GameState::loadTexture("assets/resume.png", "resumebutton");
+	GameState::loadTexture("assets/main.png", "mainbutton");
 
+	// 객체 생성
 	GameObject* button1 = new MenuButton(new LoaderParams(200, 100, 200, 80, "mainbutton"), s_pauseToMain);
 	GameObject* button2 = new MenuButton(new LoaderParams(200, 300, 200, 80, "resumebutton"), s_resumePlay);
-	m_gameObjects.push_back(button1);
-	m_gameObjects.push_back(button2);
+
+	// 배열에 push
+	GameState::push(button1, button2);
 
 	std::cout << "entering PauseState" << std::endl;
 	return true;
 }
 
-bool PauseState::onExit()
+bool PauseState::onExit()		// PauseState 종료 시
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-	m_gameObjects.clear();
+	GameState::onExit();
 
 	TheTextureManager::Instance()->clearFromTextureMap("resumebutton");
 	TheTextureManager::Instance()->clearFromTextureMap("mainbutton");

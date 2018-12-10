@@ -1,6 +1,7 @@
 #include "TextureManager.h"
+#include "Game.h"
 
-bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer)
+bool TextureManager::load(std::string fileName, std::string id)		// 이미지 로드 함수
 {
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 
@@ -8,7 +9,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 		return false;
 	}
 
-	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(TheGame::Instance()->getRenderer(), pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 
 	if (pTexture != 0) {
@@ -19,7 +20,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 	return false;
 }
 
-void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
+void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_RendererFlip flip)		// 이미지 드로우 함수(프레임x)
 {
 	SDL_Rect srcRect;	// 원본 사각형
 	SDL_Rect destRect;	// 대상 사각형
@@ -31,25 +32,25 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height, S
 	destRect.x = x;
 	destRect.y = y;
 
-	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(TheGame::Instance()->getRenderer(), m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
-void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
+void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_RendererFlip flip)		// 스프라이트 이미지 드로우 함수(프레임o)
 {
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
 	srcRect.x = width * currentFrame;
-	srcRect.y = height * (currentRow - 1);
+	srcRect.y = height * currentRow;
 	srcRect.w = destRect.w = width;
 	srcRect.h = destRect.h = height;
 	destRect.x = x;
 	destRect.y = y;
 
-	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(TheGame::Instance()->getRenderer(), m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
-void TextureManager::clearFromTextureMap(std::string id)
+void TextureManager::clearFromTextureMap(std::string id)		// 이미지 클리어
 {
 	m_textureMap.erase(id);
 }

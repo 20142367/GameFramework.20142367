@@ -14,17 +14,14 @@ PlayState::PlayState()
 
 void PlayState::update()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+	GameState::update();
 
-	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
+	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))		// 충돌 체크
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
 
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))		// ESC 키 다운 시, PauseState로 이동
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new PauseState());
 	}
@@ -32,39 +29,29 @@ void PlayState::update()
 
 void PlayState::render()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	GameState::render();
 }
 
-bool PlayState::onEnter()
+bool PlayState::onEnter()		// PlayState 진입 시
 {
-	if (!TheTextureManager::Instance()->load("assets/helicopter.png", "helicopter", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/helicopter2.png", "helicopter2", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
+	// 스프라이트 로드
+	GameState::loadTexture("assets/helicopter.png", "helicopter");
+	GameState::loadTexture("assets/helicopter2.png", "helicopter2");
 
+	// 객체 생성
 	GameObject* player = new Player(new LoaderParams(500, 100, 128, 55, "helicopter"));
 	GameObject* enemy = new Enemy(new LoaderParams(100, 100, 128, 55, "helicopter2"));
-	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(enemy);
+
+	// 배열에 push
+	GameState::push(player, enemy);
 
 	std::cout << "entering PlayState" << std::endl;
 	return true;
 }
 
-bool PlayState::onExit()
+bool PlayState::onExit()		// PlayState 종료 시
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->clean();
-	}
-	m_gameObjects.clear();
+	GameState::onExit();
 
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
 
@@ -72,12 +59,12 @@ bool PlayState::onExit()
 	return true;
 }
 
-bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
+bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)		// 충돌체크 함수 정의
 {
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
+	int leftA, leftB;		// 사각형의 왼쪽 좌표의 x값
+	int rightA, rightB;		// 사각형의 오른쪽 좌표의 x값
+	int topA, topB;			// 사각형의 위쪽 좌표의 y값
+	int bottomA, bottomB;	// 사각형의 아래쪽 좌표의 y값
 
 	leftA = p1->getPosition().getX();
 	rightA = p1->getPosition().getX() + p1->getWidth();
