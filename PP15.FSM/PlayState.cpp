@@ -16,6 +16,11 @@ void PlayState::update()
 {
 	GameState::update();
 
+	for (int i = 0; i < m_tile.size(); i++)
+	{
+		m_tile[i]->update();
+	}
+
 	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))		// 충돌 체크
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
@@ -30,6 +35,11 @@ void PlayState::update()
 void PlayState::render()
 {
 	GameState::render();
+
+	for (int i = 0; i < m_tile.size(); i++)
+	{
+		m_tile[i]->draw();
+	}
 }
 
 bool PlayState::onEnter()		// PlayState 진입 시
@@ -37,6 +47,7 @@ bool PlayState::onEnter()		// PlayState 진입 시
 	// 스프라이트 로드
 	GameState::loadTexture("assets/helicopter.png", "helicopter");
 	GameState::loadTexture("assets/helicopter2.png", "helicopter2");
+	GameState::loadTexture("assets/projectile.png", "tile");
 
 	// 객체 생성
 	GameObject* player = new Player(new LoaderParams(500, 100, 128, 55, "helicopter"));

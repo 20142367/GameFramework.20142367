@@ -1,6 +1,10 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "Game.h"
+#include "PlayState.h"
+
+Uint32 startTime, currentTime;
+const float coolTime = 400.0f;
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
@@ -31,4 +35,15 @@ void Player::handleInput()
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+	{
+		startTime = SDL_GetTicks();
+
+		if (coolTime <= startTime - currentTime)
+		{
+			Projectile* projectile = new Projectile(new LoaderParams(Player::m_position.getX() + 128, Player::m_position.getY() + 10, 32, 32, "projectile"));
+			PlayState::Instance()->m_tile.push_back(projectile);
+			currentTime = SDL_GetTicks();
+		}
+	}
 }

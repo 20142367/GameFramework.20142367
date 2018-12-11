@@ -16,20 +16,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 		m_bRunning = true;		// 루프 온
 
-		// load 부분 대치
-		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
-		{
-			return false;
-		}
-
-		if (!TextureManager::Instance()->load("Assets/ball.png", "ball", m_pRenderer))
-		{
-			return false;
-		}
-
-		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));	// m_gameObejects라는 벡터배열(?)에 Player객체를 push해 줌
-		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
-
 		m_pGameStateMachine = new GameStateMachine();
 		m_pGameStateMachine->changeState(MenuState::Instance());
 
