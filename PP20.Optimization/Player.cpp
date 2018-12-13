@@ -41,7 +41,7 @@ void Player::handleInput()
 
 		if (coolTime <= startTime - currentTime)
 		{
-			Projectile* projectile = new Projectile(new LoaderParams(Player::m_position.getX() + 128, Player::m_position.getY() + 10, 32, 32, "tile"));
+			Projectile* projectile = new Projectile(new LoaderParams(Player::m_position.getX() + 128, Player::m_position.getY() + 10, 32, 32, "projectile"));
 			PlayState::Instance()->m_tile.push_back(projectile);
 			currentTime = SDL_GetTicks();
 		}

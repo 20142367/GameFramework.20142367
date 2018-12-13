@@ -44,14 +44,13 @@ void PlayState::render()
 
 bool PlayState::onEnter()		// PlayState 진입 시
 {
-
 	// 스프라이트 로드
-	GameState::loadTexture("assets/helicopter_.png", "helicopter");
+	GameState::loadTexture("assets/helicopter.png", "helicopter");
 	GameState::loadTexture("assets/helicopter2.png", "helicopter2");
 	GameState::loadTexture("assets/projectile.png", "tile");
 
 	// 객체 생성
-	GameObject* player = new Player(new LoaderParams(500, 100, 50, 30, "helicopter"));
+	GameObject* player = new Player(new LoaderParams(500, 100, 128, 55, "helicopter"));
 	GameObject* enemy = new Enemy(new LoaderParams(100, 100, 128, 55, "helicopter2"));
 
 	// 배열에 push
@@ -66,10 +65,6 @@ bool PlayState::onExit()		// PlayState 종료 시
 	GameState::onExit();
 
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
-	TheTextureManager::Instance()->clearFromTextureMap("helicopter2");
-	TheTextureManager::Instance()->clearFromTextureMap("tile");
-
-	m_tile.clear();
 
 	std::cout << "exiting PlayState" << std::endl;
 	return true;
