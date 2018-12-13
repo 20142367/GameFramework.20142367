@@ -29,6 +29,11 @@ bool GameState::onExit()
 	return true;
 }
 
+void GameState::push(GameObject* object)		// 1°³ÀÇ °´Ã¼¸¦ ÇÑ²¨¹ø¿¡ Çª½¬
+{
+	m_gameObjects.push_back(object);
+}
+
 void GameState::push(GameObject* object1, GameObject* object2)		// 2°³ÀÇ °´Ã¼¸¦ ÇÑ²¨¹ø¿¡ Çª½¬
 {
 	m_gameObjects.push_back(object1);

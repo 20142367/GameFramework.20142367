@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "SDLGameObject.h"
 #include "Projectile.h"
+#include "Obstacle.h"
 
 class PlayState : public GameState
 {
@@ -14,7 +15,8 @@ public:
 
 	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 
-	std::vector <Projectile*> m_tile;
+	std::vector <Projectile*> m_tiles;
+	std::vector <Obstacle*> m_obstacles;
 
 	static PlayState* Instance();
 

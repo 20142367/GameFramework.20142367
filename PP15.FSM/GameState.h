@@ -14,6 +14,7 @@ public:
 	virtual bool onExit();
 	virtual std::string getStateID() const = 0;
 
+	virtual void push(GameObject* object);
 	virtual void push(GameObject* object1, GameObject* object2);
 	virtual void push(GameObject* object1, GameObject* object2, GameObject* object3);
 
