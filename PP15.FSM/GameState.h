@@ -1,11 +1,20 @@
 #pragma once
 #include <vector>
 #include "GameObject.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Projectile.h"
+#include "Obstacle.h"
+#include "Map.h"
+#include "Feed.h"
 
 class GameState
 {
-protected:
+public:
 	std::vector<GameObject*> m_gameObjects;
+	std::vector<Player*> m_players;
+	std::vector<Feed*> m_feeds;
+	std::vector <Projectile*> m_tiles;
 	
 public:
 	virtual void update();

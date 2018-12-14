@@ -7,6 +7,16 @@ void GameState::update()
 	{
 		m_gameObjects[i]->update();
 	}
+
+	for (int i = 0; i < m_players.size(); i++)
+	{
+		m_players[i]->update();
+	}
+
+	for (int i = 0; i < m_feeds.size(); i++)
+	{
+		m_feeds[i]->update();
+	}
 }
 
 void GameState::render()
@@ -14,6 +24,16 @@ void GameState::render()
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->draw();
+	}
+
+	for (int i = 0; i < m_players.size(); i++)
+	{
+		m_players[i]->draw();
+	}
+
+	for (int i = 0; i < m_feeds.size(); i++)
+	{
+		m_feeds[i]->draw();
 	}
 }
 
@@ -24,7 +44,20 @@ bool GameState::onExit()
 	{
 		m_gameObjects[i]->clean();
 	}
+
+	for (int i = 0; i < m_players.size(); i++)
+	{
+		m_players[i]->clean();
+	}
+
+	for (int i = 0; i < m_feeds.size(); i++)
+	{
+		m_feeds[i]->clean();
+	}
+
 	m_gameObjects.clear();
+	m_players.clear();
+	m_feeds.clear();
 
 	return true;
 }

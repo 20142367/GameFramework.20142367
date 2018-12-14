@@ -63,6 +63,16 @@ void Game::handleEvents()
 	TheInputHandler::Instance()->update();
 }
 
+int Game::getFPS()
+{
+	return FPS;
+}
+
+void Game::setFPS(int fps)
+{
+	FPS = fps;
+}
+
 Game *Game::Instance() 
 {
 	if (s_pInstance == 0) {

@@ -29,3 +29,10 @@ void Projectile::Frame(int change)
 {
 	this->m_currentFrame = change;
 }
+
+void Projectile::setVelocity(int x, int y)
+{
+	//Player::getVelocityX();
+	m_velocity.setX(x);
+	m_velocity.setY(y);
+}

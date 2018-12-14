@@ -1,15 +1,17 @@
 #pragma once
 #include "SDLGameObject.h"
 
-class Projectile : public SDLGameObject
+class Feed : public SDLGameObject
 {
 public:
-	Projectile(const LoaderParams* pParams);
+
+	Feed(const LoaderParams* pParams);
 
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
 
 	void Frame(int change);
-	void setVelocity(int x, int y);
+private:
+	void handleInput();		// 플레이어 이동을 위한 핸들러 함수
 };
