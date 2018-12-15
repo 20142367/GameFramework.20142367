@@ -4,6 +4,7 @@
 
 Obstacle::Obstacle(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
+	m_currentFrame = 0;
 }
 
 void Obstacle::draw()

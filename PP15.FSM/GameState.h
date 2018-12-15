@@ -12,7 +12,7 @@ class GameState
 {
 public:
 	std::vector<GameObject*> m_gameObjects;
-	std::vector<Player*> m_players;
+	std::vector<SDLGameObject*> m_players;
 	std::vector<Feed*> m_feeds;
 	std::vector <Projectile*> m_tiles;
 	

@@ -66,7 +66,7 @@ bool PlayState::onEnter()		// PlayState ¡¯¿‘ Ω√
 	GameState::loadTexture("assets/Background.png", "background");
 	GameState::loadTexture("assets/map.png", "map");
 	GameState::loadTexture("assets/head.png", "head");
-	GameState::loadTexture("assets/body.png", "body");
+	GameState::loadTexture("assets/body_.png", "body");
 	GameState::loadTexture("assets/feed.png", "feed");
 	GameState::loadTexture("assets/projectile.png", "tile");
 
@@ -162,14 +162,10 @@ PlayState* PlayState::Instance()
 
 void PlayState::spawnFeed()
 {
-	startFeed = SDL_GetTicks();
-
-	if (feedTime <= startFeed - currentFeed)
+	if (feedcount < 1)
 	{
-		//GameObject* feed = new Feed(new LoaderParams((random() % 20) + 20, (random() % 14) + 30, 30, 30, "feed"));
 		Feed* feed = new Feed(new LoaderParams(((SDL_GetTicks() % 20) * 30) + 20, ((SDL_GetTicks() % 14) * 30) + 30, 30, 30, "feed"));
 		m_feeds.push_back(feed);
-
-		currentFeed = SDL_GetTicks();
+		feedcount++;
 	}
 }

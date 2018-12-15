@@ -15,6 +15,7 @@ public:
 	bool checkUnCollision(SDLGameObject* p1, SDLGameObject* p2);
 
 	void spawnFeed();
+	int feedcount = 0;
 
 	static PlayState* Instance();
 
