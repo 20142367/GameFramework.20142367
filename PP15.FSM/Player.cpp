@@ -71,33 +71,33 @@ void Player::clean()
 
 void Player::handleInput() 
 {
-	/*for (int i = bodycount; i > 0; i--)
+	for (int i = bodycount; i > 0; i--)
+	{
+		PlayState::Instance()->m_players[i]->m_velocity.setX(PlayState::Instance()->m_players[i - 1]->m_velocity.getX());
+		PlayState::Instance()->m_players[i]->m_velocity.setY(PlayState::Instance()->m_players[i - 1]->m_velocity.getY());
+	}
+	/*for (int i = PlayState::Instance()->m_players.size(); i > 1; i--)
 	{
 		PlayState::Instance()->m_players[i]->m_velocity.setX(PlayState::Instance()->m_players[i - 1]->m_velocity.getX());
 		PlayState::Instance()->m_players[i]->m_velocity.setY(PlayState::Instance()->m_players[i - 1]->m_velocity.getY());
 	}*/
-	for (int i = PlayState::Instance()->m_players.size(); i > 1; i--)
-	{
-		PlayState::Instance()->m_players[i]->m_velocity.setX(PlayState::Instance()->m_players[i - 1]->m_velocity.getX());
-		PlayState::Instance()->m_players[i]->m_velocity.setY(PlayState::Instance()->m_players[i - 1]->m_velocity.getY());
-	}
 	// 키보드 입력
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP) && (PlayState::Instance()->m_players[0]->m_velocity.getY() <= 0))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP) && !(PlayState::Instance()->m_players[0]->m_velocity.getY() > 0))
 	{
 		PlayState::Instance()->m_players[0]->m_velocity.setX(0);
 		PlayState::Instance()->m_players[0]->m_velocity.setY(-30);
 	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN) && (PlayState::Instance()->m_players[0]->m_velocity.getY() >= 0))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN) && !(PlayState::Instance()->m_players[0]->m_velocity.getY() < 0))
 	{
 		PlayState::Instance()->m_players[0]->m_velocity.setX(0);
 		PlayState::Instance()->m_players[0]->m_velocity.setY(30);
 	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && (PlayState::Instance()->m_players[0]->m_velocity.getX() <= 0))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && !(PlayState::Instance()->m_players[0]->m_velocity.getX() > 0))
 	{
 		PlayState::Instance()->m_players[0]->m_velocity.setX(-30);
 		PlayState::Instance()->m_players[0]->m_velocity.setY(0);
 	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) && (PlayState::Instance()->m_players[0]->m_velocity.getX() >= 0))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) && !(PlayState::Instance()->m_players[0]->m_velocity.getX() < 0))
 	{
 		PlayState::Instance()->m_players[0]->m_velocity.setX(30);
 		PlayState::Instance()->m_players[0]->m_velocity.setY(0);
@@ -145,17 +145,17 @@ void Player::makeBody()
 	}
 	else if (PlayState::Instance()->m_players[bodycount]->m_velocity.getX() < 0)
 	{
-		body = new Player(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX() + 30, PlayState::Instance()->m_players[bodycount]->m_position.getY(), 30, 30, "body"));
+		body = new SDLGameObject(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX() + 30, PlayState::Instance()->m_players[bodycount]->m_position.getY(), 30, 30, "body"));
 		PlayState::Instance()->m_players.push_back(body);
 	}
 	else if (PlayState::Instance()->m_players[bodycount]->m_velocity.getY() > 0)
 	{
-		body = new Player(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX(), PlayState::Instance()->m_players[bodycount]->m_position.getY() - 30, 30, 30, "body"));
+		body = new SDLGameObject(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX(), PlayState::Instance()->m_players[bodycount]->m_position.getY() - 30, 30, 30, "body"));
 		PlayState::Instance()->m_players.push_back(body);
 	}
 	else if (PlayState::Instance()->m_players[bodycount]->m_velocity.getY() < 0)
 	{
-		body = new Player(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX(), PlayState::Instance()->m_players[bodycount]->m_position.getY() + 30, 30, 30, "body"));
+		body = new SDLGameObject(new LoaderParams(PlayState::Instance()->m_players[bodycount]->m_position.getX(), PlayState::Instance()->m_players[bodycount]->m_position.getY() + 30, 30, 30, "body"));
 		PlayState::Instance()->m_players.push_back(body);
 	}
 	else
