@@ -66,6 +66,7 @@ bool PlayState::onExit()		// PlayState Á¾·á ½Ã
 
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter2");
+	TheTextureManager::Instance()->clearFromTextureMap("tile");
 
 	std::cout << "exiting PlayState" << std::endl;
 	return true;
