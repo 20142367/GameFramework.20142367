@@ -78,6 +78,18 @@
     <ClCompile Include="LevelState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Trash.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ManualState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Manual.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h">
@@ -144,6 +156,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="LevelState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Trash.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ManualState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Manual.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

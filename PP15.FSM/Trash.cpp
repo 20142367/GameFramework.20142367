@@ -1,29 +1,29 @@
-#include "Feed.h"
+#include "Trash.h"
 #include "InputHandler.h"
 #include "Game.h"
 #include "PlayState.h"
 
-Feed::Feed(const LoaderParams* pParams) : SDLGameObject(pParams)
+Trash::Trash(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 	m_numFrames = 2;
 }
 
-void Feed::draw()
+void Trash::draw()
 {
 	SDLGameObject::draw(); // SDLGameObject의 draw함수를 사용
 }
 
-void Feed::update()
+void Trash::update()
 {
 	m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);		// 스프라이트 이미지의 개수만큼 순환
 
 	SDLGameObject::update();
 }
 
-void Feed::clean()
+void Trash::clean()
 {
 }
 
-void Feed::handleInput()
+void Trash::handleInput()
 {
 }

@@ -14,13 +14,21 @@ public:
 	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 	bool checkUnCollision(SDLGameObject* p1, SDLGameObject* p2);
 
+	void setType(int type);
+	int getType();
+
 	void spawnFeed();
 	int feedcount = 0;
+
+	Feed* feed;
+	Trash* trash;
 
 	static PlayState* Instance();
 
 private:
 	PlayState();
+
+	int type;
 
 	static const std::string s_playID;
 

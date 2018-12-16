@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimatedGraphic.cpp" />
+    <ClCompile Include="ClearState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Feed.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -134,6 +135,8 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LevelState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manual.cpp" />
+    <ClCompile Include="ManualState.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -144,9 +147,11 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="SDLGameObject.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Trash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedGraphic.h" />
+    <ClInclude Include="ClearState.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Feed.h" />
     <ClInclude Include="Game.h" />
@@ -157,6 +162,8 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LevelState.h" />
     <ClInclude Include="LoaderParams.h" />
+    <ClInclude Include="Manual.h" />
+    <ClInclude Include="ManualState.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="MenuState.h" />
@@ -167,6 +174,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Trash.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

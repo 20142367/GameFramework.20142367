@@ -56,10 +56,10 @@ void Game::clean()
 
 void Game::handleEvents() 
 {
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	/*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
 	{
 		m_pGameStateMachine->changeState(PlayState::Instance());
-	}
+	}*/
 	TheInputHandler::Instance()->update();
 }
 

@@ -7,13 +7,14 @@
 #include "Obstacle.h"
 #include "Map.h"
 #include "Feed.h"
+#include "Trash.h"
 
 class GameState
 {
 public:
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<SDLGameObject*> m_players;
-	std::vector<Feed*> m_feeds;
+	std::vector<SDLGameObject*> m_spawns;
 	std::vector <Projectile*> m_tiles;
 	
 public:

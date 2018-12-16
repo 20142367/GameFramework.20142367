@@ -1,11 +1,11 @@
 #pragma once
 #include "SDLGameObject.h"
 
-class Feed : public SDLGameObject
+class Manual : public SDLGameObject
 {
 public:
 
-	Feed(const LoaderParams* pParams);
+	Manual(const LoaderParams* pParams);
 
 	virtual void draw();
 	virtual void update();

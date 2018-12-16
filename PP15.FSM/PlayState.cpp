@@ -68,6 +68,7 @@ bool PlayState::onEnter()		// PlayState 진입 시
 	GameState::loadTexture("assets/head.png", "head");
 	GameState::loadTexture("assets/body.png", "body");
 	GameState::loadTexture("assets/feed.png", "feed");
+	GameState::loadTexture("assets/trash.png", "trash");
 	GameState::loadTexture("assets/projectile.png", "tile");
 
 	// 객체 생성
@@ -81,6 +82,8 @@ bool PlayState::onEnter()		// PlayState 진입 시
 	m_players.push_back(head);
 
 	feedcount = 0;
+
+	spawnFeed();
 	
 	std::cout << "entering PlayState" << std::endl;
 	return true;
@@ -166,8 +169,30 @@ void PlayState::spawnFeed()
 {
 	if (feedcount < 1)
 	{
-		Feed* feed = new Feed(new LoaderParams(((SDL_GetTicks() % 20) * 30) + 20, ((SDL_GetTicks() % 14) * 30) + 30, 30, 30, "feed"));
-		m_feeds.push_back(feed);
+		int feednum = SDL_GetTicks() % 10;
+
+		if (feednum < 9)
+		{
+			feed = new Feed(new LoaderParams(((SDL_GetTicks() % 20) * 30) + 20, ((SDL_GetTicks() % 14) * 30) + 30, 30, 30, "feed"));
+			m_spawns.push_back(feed);
+			setType(1);
+		}
+		else
+		{
+			trash = new Trash(new LoaderParams(((SDL_GetTicks() % 20) * 30) + 20, ((SDL_GetTicks() % 14) * 30) + 30, 30, 30, "trash"));
+			m_spawns.push_back(trash);
+			setType(0);
+		}
 		feedcount++;
 	}
+}
+
+void PlayState::setType(int type)
+{
+	this->type = type;
+}
+
+int PlayState::getType()
+{
+	return type;
 }
