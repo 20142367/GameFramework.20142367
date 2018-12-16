@@ -35,7 +35,7 @@ void Player::handleInput()
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))		// z버튼으로 총알 발사
 	{
 		startTime = SDL_GetTicks();
 

@@ -24,7 +24,7 @@ bool GameState::onExit()
 	{
 		m_gameObjects[i]->clean();
 	}
-	m_gameObjects.clear();
+	m_gameObjects.clear();		// 배열 초기화
 
 	return true;
 }

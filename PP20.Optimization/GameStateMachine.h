@@ -7,7 +7,6 @@ public:
 	std::vector<GameState*> m_gameStates;
 
 	void changeState(GameState* pState);
-	void pushState(GameState* pState);
 	void popState();
 
 	void update();

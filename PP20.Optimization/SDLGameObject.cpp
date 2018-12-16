@@ -12,7 +12,7 @@ SDLGameObject::SDLGameObject(const LoaderParams* pParams) : GameObject(pParams),
 
 void SDLGameObject::draw()
 {
-	if (m_velocity.getX() > 0)
+	if (m_velocity.getX() > 0)		// 오브젝트가 오른쪽으로 이동할때 좌우대칭시켜줌
 	{
 		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, SDL_FLIP_HORIZONTAL);
 	}

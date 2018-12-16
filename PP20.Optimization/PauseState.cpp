@@ -6,6 +6,12 @@
 
 const std::string PauseState::s_pauseID = "PAUSE";
 
+PauseState* PauseState::s_pInstance = 0;
+
+PauseState::PauseState()
+{
+}
+
 void PauseState::s_pauseToMain()
 {
 	TheGame::Instance()->getStateMachine()->changeState(MenuState::Instance());
@@ -54,4 +60,14 @@ bool PauseState::onExit()		// PauseState Á¾·á ½Ã
 
 	std::cout << "exiting PauseState" << std::endl;
 	return true;
+}
+
+PauseState* PauseState::Instance()
+{
+	if (s_pInstance == 0)
+	{
+		s_pInstance = new PauseState();
+		return s_pInstance;
+	}
+	return s_pInstance;
 }

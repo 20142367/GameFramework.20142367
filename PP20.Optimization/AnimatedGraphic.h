@@ -10,6 +10,6 @@ public:
 	virtual void update();
 
 private:
-	int m_animSpeed;
+	int m_animSpeed;	// 애니메이션 속도
 };
 

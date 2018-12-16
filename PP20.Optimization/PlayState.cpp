@@ -23,12 +23,12 @@ void PlayState::update()
 
 	if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))		// 충돌 체크
 	{
-		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+		TheGame::Instance()->getStateMachine()->changeState(GameOverState::Instance());
 	}
 
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))		// ESC 키 다운 시, PauseState로 이동
 	{
-		TheGame::Instance()->getStateMachine()->changeState(new PauseState());
+		TheGame::Instance()->getStateMachine()->changeState(PauseState::Instance());
 	}
 }
 
@@ -65,6 +65,7 @@ bool PlayState::onExit()		// PlayState 종료 시
 	GameState::onExit();
 
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
+	TheTextureManager::Instance()->clearFromTextureMap("helicopter2");
 
 	std::cout << "exiting PlayState" << std::endl;
 	return true;

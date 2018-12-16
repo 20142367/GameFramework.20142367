@@ -1,17 +1,11 @@
 #include "GameStateMachine.h"
 
-void GameStateMachine::pushState(GameState *pState)
-{
-	m_gameStates.push_back(pState);
-	m_gameStates.back()->onEnter();
-}
-
-void GameStateMachine::popState()
+void GameStateMachine::popState()		// 이전의 State로 돌아감
 {
 	changeState(m_prevState);
 }
 
-void GameStateMachine::changeState(GameState *pState)
+void GameStateMachine::changeState(GameState *pState)		// 새로운 State로 바꿔줌
 {
 	if (pState != NULL)
 	{

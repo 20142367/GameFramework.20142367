@@ -8,6 +8,12 @@
 
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
 
+GameOverState* GameOverState::s_pInstance = 0;
+
+GameOverState::GameOverState()
+{
+}
+
 void GameOverState::s_gameOverToMain()		// MainMenu 버튼 선택 시, MenuState로 전환
 {
 	TheGame::Instance()->getStateMachine()->changeState(MenuState::Instance());
@@ -59,4 +65,14 @@ bool GameOverState::onExit()		// GameOverState 종료 시 실행
 
 	std::cout << "exiting GameOverState" << std::endl;
 	return true;
+}
+
+GameOverState* GameOverState::Instance()
+{
+	if (s_pInstance == 0)
+	{
+		s_pInstance = new GameOverState();
+		return s_pInstance;
+	}
+	return s_pInstance;
 }
