@@ -9,7 +9,6 @@ using namespace std;
 
 class Game
 {
-	
 public:
 	vector<GameObject*> m_gameObjects;
 
@@ -43,7 +42,7 @@ private:
 
 	bool m_bRunning;
 
-	int FPS = 15;
+	int FPS;
 
 	// create the s_pInstance member variable
 	static Game* s_pInstance;

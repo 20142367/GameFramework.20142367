@@ -2,6 +2,7 @@
 #include "PlayState.h"
 #include "Game.h"
 #include "MenuButton.h"
+#include "LevelState.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -28,7 +29,7 @@ bool MenuState::onEnter()		// MenuState 진입 시
 	GameState::loadTexture("assets/exit.png", "exitbutton");
 
 	// 객체 설정
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToPlay);
+	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToLevel);
 	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 400, 100, "exitbutton"), s_exitFromMenu);
 
 	// 배열에 push
@@ -51,9 +52,9 @@ bool MenuState::onExit()		// MenuState 종료 시
 	return true;
 }
 
-void MenuState::s_menuToPlay()		// Play 버튼 선택 시, PlayState로 전환
+void MenuState::s_menuToLevel()		// Play 버튼 선택 시, PlayState로 전환
 {
-	TheGame::Instance()->getStateMachine()->changeState(PlayState::Instance());
+	TheGame::Instance()->getStateMachine()->changeState(LevelState::Instance());
 
 	std::cout << "Play button clicked\n";
 }

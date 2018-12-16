@@ -12,14 +12,14 @@ SDLGameObject::SDLGameObject(const LoaderParams* pParams) : GameObject(pParams),
 
 void SDLGameObject::draw()
 {
-	if (m_velocity.getX() > 0)
+	/*if (m_velocity.getX() > 0)
 	{
 		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, SDL_FLIP_HORIZONTAL);
 	}
 	else
-	{
+	{*/
 		TextureManager::Instance()->drawFrame(m_textureID, (int)m_position.getX(), (int)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame);
-	}
+	//}
 }
 
 void SDLGameObject::update()

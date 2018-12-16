@@ -1,6 +1,6 @@
 #include "Game.h"
 
-//const int FPS = 15;							// 프로그램의 프레임을 설정
+const int FPS = 15;							// 프로그램의 프레임을 설정
 float DELAY_TIME;		// 화면 출력 횟수를 조절
 Uint32 frameStart, frameTime;
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
 	while (TheGame::Instance()->running())
 	{
-		DELAY_TIME = 1000.0f / (TheGame::Instance()->getFPS());
+		DELAY_TIME = 1000.0f / FPS;
 
 		frameStart = SDL_GetTicks();
 		TheGame::Instance()->handleEvents();

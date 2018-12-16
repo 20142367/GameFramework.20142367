@@ -39,7 +39,7 @@ void PlayState::update()
 
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))		// ESC 키 다운 시, PauseState로 이동
 	{
-		TheGame::Instance()->getStateMachine()->changeState(new PauseState());
+		TheGame::Instance()->getStateMachine()->changeState(PauseState::Instance());
 	}
 
 	/*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_R))
@@ -66,7 +66,7 @@ bool PlayState::onEnter()		// PlayState 진입 시
 	GameState::loadTexture("assets/Background.png", "background");
 	GameState::loadTexture("assets/map.png", "map");
 	GameState::loadTexture("assets/head.png", "head");
-	GameState::loadTexture("assets/body_.png", "body");
+	GameState::loadTexture("assets/body.png", "body");
 	GameState::loadTexture("assets/feed.png", "feed");
 	GameState::loadTexture("assets/projectile.png", "tile");
 
@@ -79,6 +79,8 @@ bool PlayState::onEnter()		// PlayState 진입 시
 	m_gameObjects.push_back(background);
 	m_gameObjects.push_back(map);
 	m_players.push_back(head);
+
+	feedcount = 0;
 	
 	std::cout << "entering PlayState" << std::endl;
 	return true;
