@@ -23,7 +23,3 @@ void Manual::update()
 void Manual::clean()
 {
 }
-
-void Manual::handleInput()
-{
-}

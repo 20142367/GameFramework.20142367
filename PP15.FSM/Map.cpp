@@ -24,7 +24,3 @@ void Map::clean()
 {
 
 }
-
-void Map::handleInput()
-{
-}

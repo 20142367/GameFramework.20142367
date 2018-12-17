@@ -21,9 +21,6 @@ public:
 	void quit();
 	bool running() { return m_bRunning; }
 
-	int getFPS();
-	void setFPS(int fps);
-
 	static Game* Instance();
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
@@ -41,8 +38,6 @@ private:
 	TextureManager* m_textureManager;
 
 	bool m_bRunning;
-
-	int FPS;
 
 	// create the s_pInstance member variable
 	static Game* s_pInstance;

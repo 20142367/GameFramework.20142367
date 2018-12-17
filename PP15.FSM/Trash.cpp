@@ -23,7 +23,3 @@ void Trash::update()
 void Trash::clean()
 {
 }
-
-void Trash::handleInput()
-{
-}

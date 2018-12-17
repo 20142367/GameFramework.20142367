@@ -23,7 +23,3 @@ void Feed::update()
 void Feed::clean()
 {
 }
-
-void Feed::handleInput()
-{
-}
